@@ -6,8 +6,10 @@ import { Login } from '@/modules/auth/pages/Login';
 import { SelectFecha } from '@/modules/auth/pages/SelectFecha';
 import { DashboardRoutes } from '@/modules/dashboard/Dashboard.routes';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
+
 import { CuadraturaRoutes } from '@/modules/cuadratura/Cuadratura.routes';
 import { ConsultasRoutes } from '@/modules/consultas/consultas.routes';
+import { PrestamosRoutes } from '@/modules/prestamos/Prestamos.routes';
 
 export const AppRouter = () => {
   const { isAuthenticated } = useAuth();
@@ -55,6 +57,9 @@ export const AppRouter = () => {
 
           {/* Rutas de Consultas */}
           <Route path="/consultas/*" element={<ConsultasRoutes />} />
+
+          {/* Rutas de Prestamos */}
+          <Route path="/prestamos/*" element={<PrestamosRoutes />} />
         </Route>
       </Routes>
     </BrowserRouter>
