@@ -1,12 +1,10 @@
 import { ReactNode, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
+import { Outlet } from 'react-router-dom';
 
-interface AppLayoutProps {
-  children: ReactNode;
-}
 
-export const AppLayout = ({ children }: AppLayoutProps) => {
+export const AppLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -15,7 +13,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       <div className="flex">
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
         <main className="flex-1 p-6 md:p-8">
-          {children}
+          <Outlet />
         </main>
       </div>
     </div>

@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthLayout } from '@/layouts/AuthLayout/AuthLayout';
 import { AppLayout } from '@/layouts/AppLayout/AppLayout';
 import { AuthGuard } from '@/modules/shared/guards/AuthGuard';
-import { NotFound } from '@/modules/shared/pages/NotFound';
 import { Login } from '@/modules/auth/pages/Login';
 import { SelectFecha } from '@/modules/auth/pages/SelectFecha';
 import { DashboardRoutes } from '@/modules/dashboard/Dashboard.routes';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
+import { CuadraturaRoutes } from '@/modules/cuadratura/Cuadratura.routes';
 
 export const AppRouter = () => {
   const { isAuthenticated } = useAuth();
@@ -40,18 +40,18 @@ export const AppRouter = () => {
 
         {/* Protected Routes */}
         <Route
-          path="/*"
           element={
             <AuthGuard>
-              <AppLayout>
-                <DashboardRoutes />
-              </AppLayout>
+              <AppLayout />
             </AuthGuard>
           }
-        />
+        >
+          {/* Rutas de Dashboard */}
+          <Route path="/*" element={<DashboardRoutes />} />
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
+          {/* Rutas de Cuadratura */}
+          <Route path="/cuadratura/*" element={<CuadraturaRoutes />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
