@@ -24,7 +24,7 @@ export const Navbar = ({ onToggleSidebar }: NavbarProps) => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/auth/');
   };
 
   const selectedLocal = JSON.parse(localStorage.getItem(STORAGE_KEYS.SELECTED_LOCAL) || '{}');
@@ -87,7 +87,7 @@ export const Navbar = ({ onToggleSidebar }: NavbarProps) => {
                 <User className="mr-2 h-4 w-4" />
                 Perfil
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => navigate('/select-fecha')}>
+              <DropdownMenuItem onClick={() => navigate('/auth/select-fecha')}>
                 <MapPin className="mr-2 h-4 w-4" />
                 Cambiar Local/Fecha
               </DropdownMenuItem>

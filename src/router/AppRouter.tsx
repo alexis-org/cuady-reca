@@ -1,47 +1,31 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthLayout } from '@/layouts/AuthLayout/AuthLayout';
-import { AppLayout } from '@/layouts/AppLayout/AppLayout';
-import { AuthGuard } from '@/modules/shared/guards/AuthGuard';
-import { Login } from '@/modules/auth/pages/Login';
-import { SelectFecha } from '@/modules/auth/pages/SelectFecha';
-import { DashboardRoutes } from '@/modules/dashboard/Dashboard.routes';
-import { useAuth } from '@/modules/auth/hooks/useAuth';
 
-import { CuadraturaRoutes } from '@/modules/cuadratura/Cuadratura.routes';
+import { AppLayout } from '@/layouts/AppLayout/AppLayout';
+import { AuthLayout } from '@/layouts/AuthLayout/AuthLayout';
+
+import { AuthRoutes } from '@/modules/auth/Auth.routes';
+
+import { AuthGuard } from '@/modules/shared/guards/AuthGuard';
+
 import { ConsultasRoutes } from '@/modules/consultas/Consultas.routes';
+import { CuadraturaRoutes } from '@/modules/cuadratura/Cuadratura.routes';
+import { DashboardRoutes } from '@/modules/dashboard/Dashboard.routes';
+import { MantenimientoRoutes } from '@/modules/mantenimiento/Mantenimiento.routes';
 import { PrestamosRoutes } from '@/modules/prestamos/Prestamos.routes';
 import { RRHHRoutes } from '@/modules/rrhh/RRHH.routes';
-import { MantenimientoRoutes } from '@/modules/mantenimiento/Mantenimiento.routes';
 
 export const AppRouter = () => {
-  const { isAuthenticated } = useAuth();
 
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Routes */}
-        <Route
-          path="/login"
-          element={
-            isAuthenticated ? (
-              <Navigate to="/select-fecha" replace />
-            ) : (
-              <AuthLayout>
-                <Login />
-              </AuthLayout>
-            )
-          }
-        />
-        <Route
-          path="/select-fecha"
-          element={
-            <AuthGuard>
-              <AuthLayout>
-                <SelectFecha />
-              </AuthLayout>
-            </AuthGuard>
-          }
-        />
+
+        {/* Ruta pública */}
+        <Route element={<AuthLayout />}>
+          <Route path="/auth/*" element={<AuthRoutes />} />
+
+          <Route path="/auth" element={<Navigate to="/auth/login" replace />} />
+        </Route>
 
         {/* Protected Routes */}
         <Route

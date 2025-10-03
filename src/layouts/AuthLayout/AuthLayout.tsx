@@ -1,14 +1,11 @@
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 
-interface AuthLayoutProps {
-  children: ReactNode;
-}
 
-export const AuthLayout = ({ children }: AuthLayoutProps) => {
+export const AuthLayout = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10 p-4">
       <div className="w-full max-w-6xl flex items-center justify-center">
-        {children}
+        <Outlet />
       </div>
     </div>
   );

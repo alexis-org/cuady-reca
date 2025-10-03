@@ -12,7 +12,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/select-fecha', { replace: true });
+      navigate('/auth/select-fecha', { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
@@ -27,7 +27,7 @@ export const Login = () => {
         description: `Bienvenido ${response.user.fullName}`,
       });
 
-      navigate('/select-fecha');
+      navigate('/auth/select-fecha');
     } catch (error: any) {
       toast({
         title: 'Error al iniciar sesión',
