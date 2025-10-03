@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { ConsultaPrestamo } from './pages/ConsultaPrestamo';
-import NotFound from '@/pages/NotFound';
+import { NotFound } from '../shared/pages/NotFound';
 
 export const PrestamosRoutes = () => {
   return (

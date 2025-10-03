@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import NotFound from '@/pages/NotFound';
 import { MonitorDiario } from './pages/MonitorDiario';
+import { NotFound } from '../shared/pages/NotFound';
 
 export const ConsultasRoutes = () => {
   return (

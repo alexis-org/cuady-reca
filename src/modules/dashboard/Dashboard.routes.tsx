@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Monedas } from './pages/Monedas';
 import { InformeDiferencias } from './pages/InformeDiferencias';
-import NotFound from '@/pages/NotFound';
+import { NotFound } from '../shared/pages/NotFound';
 
 export const DashboardRoutes = () => {
   return (

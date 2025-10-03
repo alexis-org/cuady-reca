@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { MonitorCuadratura } from './pages/MonitorCuadratura';
-import NotFound from '@/pages/NotFound';
+import { NotFound } from '../shared/pages/NotFound';
 
 export const CuadraturaRoutes = () => {
   return (
