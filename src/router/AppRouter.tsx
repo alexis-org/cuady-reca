@@ -8,8 +8,9 @@ import { DashboardRoutes } from '@/modules/dashboard/Dashboard.routes';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
 
 import { CuadraturaRoutes } from '@/modules/cuadratura/Cuadratura.routes';
-import { ConsultasRoutes } from '@/modules/consultas/consultas.routes';
+import { ConsultasRoutes } from '@/modules/consultas/Consultas.routes';
 import { PrestamosRoutes } from '@/modules/prestamos/Prestamos.routes';
+import { RRHHRoutes } from '@/modules/rrhh/RRHH.routes';
 
 export const AppRouter = () => {
   const { isAuthenticated } = useAuth();
@@ -60,6 +61,9 @@ export const AppRouter = () => {
 
           {/* Rutas de Prestamos */}
           <Route path="/prestamos/*" element={<PrestamosRoutes />} />
+
+          {/* Rutas de RRHH */}
+          <Route path="/rrhh/*" element={<RRHHRoutes />} />
         </Route>
       </Routes>
     </BrowserRouter>
