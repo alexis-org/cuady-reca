@@ -9,6 +9,7 @@ import {
   Users,
   ChevronDown,
   ChevronRight,
+  Settings,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -25,17 +26,6 @@ const navigationItems: NavItem[] = [
     label: 'Inicio',
     icon: <Home className="h-5 w-5" />,
     path: '/',
-  },
-  {
-    label: 'Mantenimiento',
-    icon: <Coins className="h-5 w-5" />,
-    children: [
-      {
-        label: 'Monedas',
-        icon: <Coins className="h-4 w-4" />,
-        path: '/mantenimiento/monedas',
-      },
-    ],
   },
   {
     label: 'Cuadratura',
@@ -78,6 +68,17 @@ const navigationItems: NavItem[] = [
         label: 'Informe Diferencias',
         icon: <Users className="h-4 w-4" />,
         path: '/rrhh/informe-diferencias',
+      },
+    ],
+  },
+  {
+    label: 'Mantenimiento',
+    icon: <Settings className="h-5 w-5" />,
+    children: [
+      {
+        label: 'Monedas',
+        icon: <Coins className="h-4 w-4" />,
+        path: '/mantenimiento/monedas',
       },
     ],
   },

@@ -40,10 +40,10 @@ export const SelectFecha = () => {
   const selectedLocalId = form.watch('localId');
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login', { replace: true });
-      return;
-    }
+    // if (!isAuthenticated) {
+    //   navigate('/login', { replace: true });
+    //   return;
+    // }
 
     const loadLocales = async () => {
       try {
@@ -104,7 +104,7 @@ export const SelectFecha = () => {
       const nuevaFecha = await authService.createFechaContable(localId);
       setFechas([nuevaFecha, ...fechas]);
       form.setValue('fechaId', nuevaFecha.id);
-      
+
       toast({
         title: 'Fecha creada',
         description: `Nueva fecha contable: ${nuevaFecha.fecha}`,
@@ -154,7 +154,9 @@ export const SelectFecha = () => {
     <div className="w-full max-w-md space-y-8">
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight">Selección de Fecha Contable</h1>
-        <p className="mt-2 text-muted-foreground">Configure su contexto de trabajo</p>
+        <p className="mt-2 text-muted-foreground">
+          Para Comenzar, seleccione un <strong>Local</strong> y <strong>Fecha Contable</strong> en donde se realizará el proceso de Cuadratura y Recaudación. Si no existe, puede crear una nueva Fecha Contable.
+        </p>
       </div>
 
       <div className="bg-card border rounded-lg p-8 shadow-sm">
