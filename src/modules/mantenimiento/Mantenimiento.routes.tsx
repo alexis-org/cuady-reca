@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home } from './pages/Home';
 import { NotFound } from '../shared/pages/NotFound';
+import { Monedas } from './pages/Monedas';
 
-export const DashboardRoutes = () => {
+export const MantenimientoRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/monedas" element={<Monedas />} />
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />

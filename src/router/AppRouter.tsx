@@ -11,6 +11,7 @@ import { CuadraturaRoutes } from '@/modules/cuadratura/Cuadratura.routes';
 import { ConsultasRoutes } from '@/modules/consultas/Consultas.routes';
 import { PrestamosRoutes } from '@/modules/prestamos/Prestamos.routes';
 import { RRHHRoutes } from '@/modules/rrhh/RRHH.routes';
+import { MantenimientoRoutes } from '@/modules/mantenimiento/Mantenimiento.routes';
 
 export const AppRouter = () => {
   const { isAuthenticated } = useAuth();
@@ -61,9 +62,12 @@ export const AppRouter = () => {
 
           {/* Rutas de Prestamos */}
           <Route path="/prestamos/*" element={<PrestamosRoutes />} />
-
+          
           {/* Rutas de RRHH */}
           <Route path="/rrhh/*" element={<RRHHRoutes />} />
+          
+          {/* Rutas de Mantenimiento */}
+          <Route path="/mantenimiento/*" element={<MantenimientoRoutes />} />
         </Route>
       </Routes>
     </BrowserRouter>

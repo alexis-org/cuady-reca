@@ -11,8 +11,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Moneda } from '../interfaces/moneda.interface';
 import { useEffect } from 'react';
+import { Moneda } from '../interfaces/moneda.interface';
 
 const monedaSchema = z.object({
   codigo: z.string().min(1, 'Código es requerido').max(10, 'Máximo 10 caracteres'),

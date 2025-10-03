@@ -2,9 +2,7 @@ import { HeaderComponent } from '@/modules/shared/components/HeaderComponent';
 import { Button } from '@/components/ui/button';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { useState } from 'react';
-import { useMonedas } from '../hooks/useMonedas';
-import { MonedaDialog } from '../components/MonedaDialog';
-import { Moneda } from '../interfaces/moneda.interface';
+
 import {
   Table,
   TableBody,
@@ -23,6 +21,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { MonedaDialog } from '../components/MonedaDialog';
+import { useMonedas } from '../hooks/useMonedas';
+import { Moneda } from '../interfaces/moneda.interface';
 
 export const Monedas = () => {
   const { monedas, isLoading, createMoneda, updateMoneda, deleteMoneda, isCreating, isUpdating, isDeleting } = useMonedas();
