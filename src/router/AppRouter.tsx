@@ -62,12 +62,20 @@ export const AppRouter = () => {
 
           {/* Rutas de Prestamos */}
           <Route path="/prestamos/*" element={<PrestamosRoutes />} />
-          
+
           {/* Rutas de RRHH */}
           <Route path="/rrhh/*" element={<RRHHRoutes />} />
-          
+
           {/* Rutas de Mantenimiento */}
           <Route path="/mantenimiento/*" element={<MantenimientoRoutes />} />
+
+
+          {/* Rutas de redirección para compatibilidad */}
+          <Route path="/cuadratura" element={<Navigate to="/cuadratura/monitor" replace />} />
+          <Route path="/consultas" element={<Navigate to="/consultas/monitor-diario" replace />} />
+          <Route path="/prestamos" element={<Navigate to="/prestamos/consulta" replace />} />
+          <Route path="/rrhh" element={<Navigate to="/rrhh/informe-diferencias" replace />} />
+          <Route path="/mantenimiento" element={<Navigate to="/mantenimiento/monedas" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
