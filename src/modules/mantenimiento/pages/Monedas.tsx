@@ -87,7 +87,7 @@ export const Monedas = () => {
               <TableHead>Código</TableHead>
               <TableHead>Descripción</TableHead>
               <TableHead>Símbolo</TableHead>
-              <TableHead>Decimales</TableHead>
+              <TableHead>Decimal</TableHead>
               <TableHead className="text-right">Tipo de Cambio</TableHead>
               <TableHead className="w-[100px]">Acciones</TableHead>
             </TableRow>
@@ -113,7 +113,7 @@ export const Monedas = () => {
                   <TableCell>{moneda.simbolo}</TableCell>
                   <TableCell>{moneda.decimal}</TableCell>
                   <TableCell className="text-right">
-                    {moneda.tipoCambio.toFixed(6)}
+                    {moneda.tipoCambio.toFixed(1)}
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-2">
