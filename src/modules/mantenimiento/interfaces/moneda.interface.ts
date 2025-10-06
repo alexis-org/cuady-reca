@@ -3,7 +3,7 @@ export interface Moneda {
   codigo: string;
   descripcion: string;
   simbolo: string;
-  decimal: string;
+  decimal: number;
   tipoCambio: number;
   activo: boolean;
   createdAt?: string;

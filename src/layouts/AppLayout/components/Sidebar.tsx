@@ -36,6 +36,11 @@ const navigationItems: NavItem[] = [
         icon: <FileText className="h-4 w-4" />,
         path: '/cuadratura/monitor',
       },
+      {
+        label: 'Cierre Día',
+        icon: <FileText className="h-4 w-4" />,
+        path: '/cuadratura/cierre-dia',
+      },
     ],
   },
   {

@@ -92,3 +92,25 @@ error TS2307: Cannot find module '@/modules/consultas/Consultas.routes'
    ```
 
 **Prevención:** Mantén una convención de nombres consistente en todo el proyecto y verifica los imports al reorganizar archivos.
+
+### Error: Puerto incorrecto en Vite
+
+**Problema:** La aplicación no se visualiza en Lovable aunque compila correctamente.
+
+**Causa:** Lovable requiere que el servidor de desarrollo use específicamente el puerto **8080**.
+
+**Solución:**
+Asegúrate de que `vite.config.ts` tenga la configuración correcta:
+```typescript
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 8080,  // ✅ Puerto requerido por Lovable
+  },
+  // ...resto de la configuración
+}));
+```
+
+**Prevención:** 
+- No modifiques el puerto 8080 cuando trabajes con Lovable
+- Si haces cambios locales con otro puerto, revierte antes de subir cambios
