@@ -71,3 +71,24 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Solución de problemas comunes
+
+### Error: Cannot find module (Case-Sensitivity)
+
+**Problema:** El código funciona en local (Windows/macOS) pero falla en Lovable con errores como:
+```
+error TS2307: Cannot find module '@/modules/consultas/Consultas.routes'
+```
+
+**Causa:** Los sistemas de archivos locales (Windows/macOS) suelen ser case-insensitive (no distinguen mayúsculas/minúsculas), pero los servidores de build en la nube son case-sensitive (sí distinguen).
+
+**Solución:** 
+1. Verifica que los nombres de archivo en los imports coincidan EXACTAMENTE con los nombres reales de archivo
+2. Si el archivo es `consultas.routes.tsx`, el import debe ser:
+   ```typescript
+   import { ConsultasRoutes } from '@/modules/consultas/consultas.routes';
+   // NO: '@/modules/consultas/Consultas.routes'
+   ```
+
+**Prevención:** Mantén una convención de nombres consistente en todo el proyecto y verifica los imports al reorganizar archivos.
