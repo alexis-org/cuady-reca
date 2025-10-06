@@ -95,7 +95,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
-  const [expandedItems, setExpandedItems] = useState<string[]>(['Mantenimiento']);
+  const [expandedItems, setExpandedItems] = useState<string[]>(['']);
 
   const toggleExpanded = (label: string) => {
     setExpandedItems(prev =>
