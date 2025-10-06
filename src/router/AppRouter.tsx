@@ -7,7 +7,7 @@ import { AuthRoutes } from '@/modules/auth/Auth.routes';
 
 import { AuthGuard } from '@/modules/shared/guards/AuthGuard';
 
-import { ConsultasRoutes } from '@/modules/consultas/consultas.routes';
+import { ConsultasRoutes } from '@/modules/consultas/Consultas.routes';
 import { CuadraturaRoutes } from '@/modules/cuadratura/Cuadratura.routes';
 import { DashboardRoutes } from '@/modules/dashboard/Dashboard.routes';
 import { MantenimientoRoutes } from '@/modules/mantenimiento/Mantenimiento.routes';

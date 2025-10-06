@@ -5,7 +5,7 @@ import { NotFound } from '../shared/pages/NotFound';
 export const ConsultasRoutes = () => {
   return (
     <Routes>
-      <Route path="/monitor-diario" element={<MonitorDiario />} />
+      <Route path="/monitor-diario" element={<MonitorDiario />} /> 
       
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
