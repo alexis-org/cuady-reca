@@ -41,6 +41,11 @@ const navigationItems: NavItem[] = [
         icon: <FileText className="h-4 w-4" />,
         path: '/cuadratura/cierre-dia',
       },
+      {
+        label: 'Monitor de Rendición',
+        icon: <FileText className="h-4 w-4" />,
+        path: '/cuadratura/monitor-rendicion',
+      },
     ],
   },
   {
