@@ -10,6 +10,7 @@ import {
   ChevronDown,
   ChevronRight,
   Settings,
+  Building2,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -89,6 +90,11 @@ const navigationItems: NavItem[] = [
         label: 'Monedas',
         icon: <Coins className="h-4 w-4" />,
         path: '/mantenimiento/monedas',
+      },
+      {
+        label: 'Bancos',
+        icon: <Building2 className="h-4 w-4" />,
+        path: '/mantenimiento/bancos',
       },
     ],
   },
