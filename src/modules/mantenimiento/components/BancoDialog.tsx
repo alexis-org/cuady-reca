@@ -15,8 +15,8 @@ import { useEffect } from 'react';
 import { Banco } from '../interfaces/banco.interface';
 
 const bancoSchema = z.object({
-  codigo: z.string().min(1, 'Código es requerido').max(10, 'Máximo 10 caracteres'),
-  descripcion: z.string().min(1, 'Descripción es requerida').max(100, 'Máximo 100 caracteres'),
+  banCodigo: z.number().min(1, 'Código es requerido').max(10, 'Máximo 10 caracteres'),
+  banDescripcion: z.string().min(1, 'Descripción es requerida').max(100, 'Máximo 100 caracteres'),
 });
 
 type BancoFormValues = z.infer<typeof bancoSchema>;
@@ -39,21 +39,21 @@ export const BancoDialog = ({
   const form = useForm<BancoFormValues>({
     resolver: zodResolver(bancoSchema),
     defaultValues: {
-      codigo: '',
-      descripcion: '',
+      banCodigo: 0,
+      banDescripcion: '',
     },
   });
 
   useEffect(() => {
     if (banco) {
       form.reset({
-        codigo: banco.codigo,
-        descripcion: banco.descripcion,
+        banCodigo: banco.banCodigo,
+        banDescripcion: banco.banDescripcion,
       });
     } else {
       form.reset({
-        codigo: '',
-        descripcion: '',
+        banCodigo: 0,
+        banDescripcion: '',
       });
     }
   }, [banco, form]);
@@ -74,7 +74,7 @@ export const BancoDialog = ({
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="codigo"
+              name="banCodigo"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Código</FormLabel>
@@ -88,7 +88,7 @@ export const BancoDialog = ({
 
             <FormField
               control={form.control}
-              name="descripcion"
+              name="banDescripcion"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Descripción</FormLabel>

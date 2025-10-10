@@ -1,17 +1,19 @@
+import { Response } from "@/modules/shared/interfaces";
+
+export interface BancoResponse extends Response {
+  content:          Banco[];
+}
+
 export interface Banco {
-  id: string;
-  codigo: string;
-  descripcion: string;
-  activo: boolean;
-  createdAt?: string;
-  updatedAt?: string;
+  banCodigo:      number;
+  banDescripcion: string;
 }
 
 export interface CreateBancoDto {
-  codigo: string;
-  descripcion: string;
+  banCodigo:      number;
+  banDescripcion: string;
 }
 
 export interface UpdateBancoDto extends Partial<CreateBancoDto> {
-  id: string;
+  banCodigo: number;
 }

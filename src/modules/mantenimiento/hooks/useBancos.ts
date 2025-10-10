@@ -1,16 +1,19 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from '@/hooks/use-toast';
-import { CreateBancoDto, UpdateBancoDto } from '../interfaces/banco.interface';
+import { BancoResponse, CreateBancoDto, UpdateBancoDto } from '../interfaces/banco.interface';
 import { bancoService } from '../services/bancoService';
+import { responseEmpty } from '@/helpers';
 
 const QUERY_KEY = 'bancos';
 
-export const useBancos = () => {
+const response: BancoResponse = responseEmpty;
+
+export const useBancos = (params: { page: number; size: number }) => {
   const queryClient = useQueryClient();
 
-  const { data: bancos = [], isLoading } = useQuery({
-    queryKey: [QUERY_KEY],
-    queryFn: bancoService.getAll,
+  const { data: bancosRes = response, isLoading } = useQuery({
+    queryKey: [QUERY_KEY, params],
+    queryFn: () => bancoService.getAll(params),
   });
 
   const createMutation = useMutation({
@@ -68,11 +71,11 @@ export const useBancos = () => {
   });
 
   return {
-    bancos,
+    bancosRes,
     isLoading,
     createBanco: (data: CreateBancoDto) => createMutation.mutate(data),
     updateBanco: (data: UpdateBancoDto) => updateMutation.mutate(data),
-    deleteBanco: (id: string) => deleteMutation.mutate(id),
+    deleteBanco: (id: number) => deleteMutation.mutate(id),
     isCreating: createMutation.isPending,
     isUpdating: updateMutation.isPending,
     isDeleting: deleteMutation.isPending,

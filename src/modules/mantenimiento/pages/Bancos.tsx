@@ -2,6 +2,7 @@ import { HeaderComponent } from '@/modules/shared/components/HeaderComponent';
 import { Button } from '@/components/ui/button';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { useState } from 'react';
+import { TableFooterComponent } from '@/modules/shared/components/TableFooterComponent';
 
 import {
   Table,
@@ -32,11 +33,16 @@ import { useBancos } from '../hooks/useBancos';
 import { Banco, CreateBancoDto } from '../interfaces/banco.interface';
 
 export const Bancos = () => {
-  const { bancos, isLoading, createBanco, updateBanco, deleteBanco, isCreating, isUpdating, isDeleting } = useBancos();
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+  
+  const { bancosRes, isLoading, createBanco, updateBanco, deleteBanco, isCreating, isUpdating, isDeleting } = useBancos({ page, size });
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedBanco, setSelectedBanco] = useState<Banco | undefined>();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [bancoToDelete, setBancoToDelete] = useState<string | null>(null);
+  const [bancoToDelete, setBancoToDelete] = useState<number | null>(null);
+
+  const bancos = bancosRes.content;
 
   const handleCreate = () => {
     setSelectedBanco(undefined);
@@ -48,7 +54,7 @@ export const Bancos = () => {
     setDialogOpen(true);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     setBancoToDelete(id);
     setDeleteDialogOpen(true);
   };
@@ -63,10 +69,19 @@ export const Bancos = () => {
 
   const handleSubmit = (data: CreateBancoDto) => {
     if (selectedBanco) {
-      updateBanco({ ...data, id: selectedBanco.id });
+      updateBanco(data);
     } else {
       createBanco(data);
     }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleSizeChange = (newSize: number) => {
+    setSize(newSize);
+    setPage(0); // Reset to first page when changing size
   };
 
   return (
@@ -110,11 +125,11 @@ export const Bancos = () => {
               </TableRow>
             ) : (
               bancos.map((banco) => (
-                <ContextMenu key={banco.id}>
+                <ContextMenu key={banco.banCodigo}>
                   <ContextMenuTrigger asChild>
                     <TableRow className="cursor-context-menu">
-                      <TableCell className="font-medium">{banco.codigo}</TableCell>
-                      <TableCell>{banco.descripcion}</TableCell>
+                      <TableCell className="font-medium">{banco.banCodigo}</TableCell>
+                      <TableCell>{banco.banDescripcion}</TableCell>
                       <TableCell>
                         <div className="flex gap-2">
                           <Button
@@ -127,7 +142,7 @@ export const Bancos = () => {
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={() => handleDelete(banco.id)}
+                            onClick={() => handleDelete(banco.banCodigo)}
                           >
                             <Trash2 className="h-4 w-4 text-destructive" />
                           </Button>
@@ -144,8 +159,8 @@ export const Bancos = () => {
                       <Pencil className="mr-2 h-4 w-4" />
                       Editar banco
                     </ContextMenuItem>
-                    <ContextMenuItem 
-                      onClick={() => handleDelete(banco.id)}
+                    <ContextMenuItem
+                      onClick={() => handleDelete(banco.banCodigo)}
                       className="text-destructive focus:text-destructive"
                     >
                       <Trash2 className="mr-2 h-4 w-4" />
@@ -157,6 +172,13 @@ export const Bancos = () => {
             )}
           </TableBody>
         </Table>
+        
+        <TableFooterComponent
+          response={bancosRes}
+          isLoading={isLoading}
+          onPageChange={handlePageChange}
+          onSizeChange={handleSizeChange}
+        />
       </div>
 
       <BancoDialog
