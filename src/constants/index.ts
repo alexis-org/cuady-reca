@@ -19,6 +19,12 @@ export const API_ENDPOINTS = {
     UPDATE: '/monedas',
     DELETE: '/monedas',
   },
+  BANCOS: {
+    GET_ALL: '/bancos',
+    CREATE: '/bancos',
+    UPDATE: '/bancos',
+    DELETE: '/bancos',
+  },
 } as const;
 
 // User Roles

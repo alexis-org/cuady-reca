@@ -3,7 +3,7 @@ import { toast } from '@/hooks/use-toast';
 import { STORAGE_KEYS } from '@/constants';
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://api.example.com',
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8090/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
